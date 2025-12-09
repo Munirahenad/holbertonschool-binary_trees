@@ -1,32 +1,66 @@
 #include "binary_trees.h"
-#include <stdlib.h>
+#include <stddef.h>
 
 /**
- * binary_tree_levelorder - goes through a binary tree using level-order
- * @tree: pointer to the root node of the tree
- * @func: pointer to a function to call for each node
+ * binary_tree_height - Measures height of a binary tree
+ * @tree: Pointer to root node
+ *
+ * Return: Height, or 0 if tree is NULL
+ */
+size_t binary_tree_height(const binary_tree_t *tree)
+{
+	size_t left_h = 0, right_h = 0;
+
+	if (!tree)
+		return (0);
+
+	if (tree->left)
+		left_h = 1 + binary_tree_height(tree->left);
+	if (tree->right)
+		right_h = 1 + binary_tree_height(tree->right);
+
+	return (left_h > right_h ? left_h : right_h);
+}
+
+/**
+ * print_level - Prints all nodes at a specific level
+ * @tree: Pointer to root node
+ * @level: Level to print
+ * @func: Function pointer
+ */
+void print_level(const binary_tree_t *tree, size_t level, void (*func)(int))
+{
+	if (!tree)
+		return;
+
+	if (level == 1)
+	{
+		func(tree->n);
+	}
+	else if (level > 1)
+	{
+		print_level(tree->left, level - 1, func);
+		print_level(tree->right, level - 1, func);
+	}
+}
+
+/**
+ * binary_tree_levelorder - Goes through a binary tree using level-order
+ * @tree: Pointer to the root node
+ * @func: Function pointer to call for each value
  */
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
-	queue_t *queue;
-	binary_tree_t *node;
+	size_t h, level;
 
 	if (!tree || !func)
 		return;
 
-	queue = queue_create();
-	if (!queue)
-		return;
+	h = binary_tree_height(tree);
 
-	queue_enqueue(queue, (void *)tree);
-	while (!queue_is_empty(queue))
+	for (level = 1; level <= h + 1; level++)
 	{
-		node = (binary_tree_t *)queue_dequeue(queue);
-		func(node->n);
-		if (node->left)
-			queue_enqueue(queue, node->left);
-		if (node->right)
-			queue_enqueue(queue, node->right);
+		print_level(tree, level, func);
 	}
-	queue_delete(queue);
 }
+

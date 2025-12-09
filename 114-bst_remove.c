@@ -15,7 +15,7 @@ static bst_t *bst_min(bst_t *root)
 }
 
 /**
- * bst_remove_recursive - Removes a value from a BST (recursive helper)
+ * bst_remove_recursive - Removes a value from a BST (helper)
  * @root: Pointer to the root of the subtree
  * @value: Value to remove
  *

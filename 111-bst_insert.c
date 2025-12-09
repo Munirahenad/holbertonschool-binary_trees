@@ -1,6 +1,43 @@
 #include "binary_trees.h"
 
 /**
+ * bst_insert_recursive - Helper to insert a value in a BST
+ * @root: Pointer to the current node
+ * @value: Value to insert
+ *
+ * Return: Pointer to the created node, or NULL on failure or duplicate
+ */
+static bst_t *bst_insert_recursive(bst_t *root, int value)
+{
+	bst_t *new_node;
+
+	if (value < root->n)
+	{
+		if (root->left)
+			return (bst_insert_recursive(root->left, value));
+
+		new_node = binary_tree_node(root, value);
+		if (!new_node)
+			return (NULL);
+		root->left = new_node;
+		return (new_node);
+	}
+	if (value > root->n)
+	{
+		if (root->right)
+			return (bst_insert_recursive(root->right, value));
+
+		new_node = binary_tree_node(root, value);
+		if (!new_node)
+			return (NULL);
+		root->right = new_node;
+		return (new_node);
+	}
+	/* value == root->n → duplicate, ignore */
+	return (NULL);
+}
+
+/**
  * bst_insert - Inserts a value in a Binary Search Tree
  * @tree: Double pointer to the root node of the BST
  * @value: Value to insert
@@ -9,48 +46,15 @@
  */
 bst_t *bst_insert(bst_t **tree, int value)
 {
-	bst_t *current, *new_node;
-
-	if (tree == NULL)
+	if (!tree)
 		return (NULL);
 
-	/* If tree is empty, new node becomes root */
 	if (*tree == NULL)
 	{
-		*tree = (bst_t *)binary_tree_node(NULL, value);
+		*tree = binary_tree_node(NULL, value);
 		return (*tree);
 	}
 
-	current = *tree;
-
-	while (current)
-	{
-		/* Duplicate value → ignore */
-		if (value == current->n)
-			return (NULL);
-
-		if (value < current->n)
-		{
-			if (current->left == NULL)
-			{
-				new_node = (bst_t *)binary_tree_node(current, value);
-				current->left = new_node;
-				return (new_node);
-			}
-			current = current->left;
-		}
-		else
-		{
-			if (current->right == NULL)
-			{
-				new_node = (bst_t *)binary_tree_node(current, value);
-				current->right = new_node;
-				return (new_node);
-			}
-			current = current->right;
-		}
-	}
-
-	return (NULL);
+	return (bst_insert_recursive(*tree, value));
 }
 

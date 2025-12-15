@@ -159,9 +159,8 @@ int heap_extract(heap_t **root);
 /* Task 46: Heap to sorted array */
 int *heap_to_sorted_array(heap_t *heap, size_t *size);
 
-/* ---------------------- Additional Functions ----------------------------- */
+/* ---------------------- Additional Types and Utilities ------------------- */
 
-/* Binary tree delete (already included above) */
-/* Additional utility functions if needed */
+/* Note: Big O analysis tasks (29-32, 36-37, 40-41, 47-48) are separate files */
 
 #endif /* BINARY_TREES_H */

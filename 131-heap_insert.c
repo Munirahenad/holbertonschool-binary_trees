@@ -20,15 +20,15 @@ static heap_t *get_last_parent(heap_t *root)
 	while (front < rear)
 	{
 		parent = queue[front++];
-		
+
 		/* If parent has an empty child slot, return it */
 		if (!parent->left || !parent->right)
 			return (parent);
-			
+
 		queue[rear++] = parent->left;
 		queue[rear++] = parent->right;
 	}
-	
+
 	return (parent);
 }
 
@@ -40,6 +40,7 @@ static heap_t *get_last_parent(heap_t *root)
 static void swap_values(heap_t *a, heap_t *b)
 {
 	int temp = a->n;
+
 	a->n = b->n;
 	b->n = temp;
 }

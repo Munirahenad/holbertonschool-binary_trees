@@ -31,25 +31,23 @@ void binary_tree_print(const binary_tree_t *tree);
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
 void binary_tree_delete(binary_tree_t *tree);
 
-/* Binary tree measures */
+/* Binary tree measure */
 int binary_tree_balance(const binary_tree_t *tree);
 
-/* Binary tree rotations */
+/* Rotations */
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
 binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree);
 
-/* Binary Search Tree (BST) */
+/* BST */
 bst_t *bst_insert(bst_t **tree, int value);
+bst_t *array_to_bst(int *array, size_t size);
 bst_t *bst_search(const bst_t *tree, int value);
 bst_t *bst_remove(bst_t *root, int value);
 
-/* AVL Tree */
+/* AVL */
 avl_t *avl_insert(avl_t **tree, int value);
-avl_t *avl_remove(avl_t *root, int value);
-
-/* Array to trees */
-bst_t *array_to_bst(int *array, size_t size);
 avl_t *array_to_avl(int *array, size_t size);
+avl_t *avl_remove(avl_t *root, int value);
 avl_t *sorted_array_to_avl(int *array, size_t size);
 
 #endif /* BINARY_TREES_H */

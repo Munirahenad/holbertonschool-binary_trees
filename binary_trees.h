@@ -24,17 +24,9 @@ struct binary_tree_s
 };
 
 typedef struct binary_tree_s binary_tree_t;
-
-/* Binary Search Tree */
 typedef struct binary_tree_s bst_t;
-
-/* AVL Tree */
 typedef struct binary_tree_s avl_t;
-
-/* Max Binary Heap */
 typedef struct binary_tree_s heap_t;
-
-/* Function Prototypes */
 
 /* Print function */
 void binary_tree_print(const binary_tree_t *);
@@ -133,7 +125,6 @@ bst_t *bst_search(const bst_t *tree, int value);
 /* Task 28: BST remove */
 bst_t *bst_remove(bst_t *root, int value);
 
-/* Task 29-32: Big O for BST */
 /* Task 33: Is AVL */
 int binary_tree_is_avl(const binary_tree_t *tree);
 
@@ -145,18 +136,16 @@ avl_t *avl_insert(avl_t **tree, int value);
 /* Task 35: Array to AVL */
 avl_t *array_to_avl(int *array, size_t size);
 
-/* Task 36-37: Big O for AVL */
 /* Task 38: AVL remove */
 avl_t *avl_remove(avl_t *root, int value);
 
 /* Task 39: Sorted array to AVL */
 avl_t *sorted_array_to_avl(int *array, size_t size);
 
-/* Task 40-41: Big O for AVL from sorted array */
+/* ---------------------- Binary Heap Operations --------------------------- */
+
 /* Task 42: Is Binary Heap */
 int binary_tree_is_heap(const binary_tree_t *tree);
-
-/* ---------------------- Binary Heap Operations --------------------------- */
 
 /* Task 43: Heap insert */
 heap_t *heap_insert(heap_t **root, int value);
@@ -170,6 +159,9 @@ int heap_extract(heap_t **root);
 /* Task 46: Heap to sorted array */
 int *heap_to_sorted_array(heap_t *heap, size_t *size);
 
-/* Task 47-48: Big O for Binary Heap */
+/* ---------------------- Additional Functions ----------------------------- */
+
+/* Binary tree delete (already included above) */
+/* Additional utility functions if needed */
 
 #endif /* BINARY_TREES_H */

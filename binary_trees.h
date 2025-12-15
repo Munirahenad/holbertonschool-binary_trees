@@ -24,7 +24,7 @@ typedef struct binary_tree_s bst_t;
 typedef struct binary_tree_s avl_t;
 typedef struct binary_tree_s heap_t;
 
-/* Printing function (provided) */
+/* Printing function */
 void binary_tree_print(const binary_tree_t *tree);
 
 /* Binary Tree - Basic Operations */
@@ -74,8 +74,8 @@ bst_t *array_to_bst(int *array, size_t size);
 bst_t *bst_search(const bst_t *tree, int value);
 bst_t *bst_remove(bst_t *root, int value);
 
-/* AVL - Insert */
+/* AVL - Insert / Build */
 avl_t *avl_insert(avl_t **tree, int value);
+avl_t *array_to_avl(int *array, size_t size);
 
 #endif /* BINARY_TREES_H */
-

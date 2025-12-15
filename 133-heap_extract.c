@@ -1,39 +1,6 @@
 #include "binary_trees.h"
 
 /**
- * tree_height - Measures height of a binary tree
- * @tree: Pointer to root node
- *
- * Return: Height of tree, 0 if NULL
- */
-static size_t tree_height(const heap_t *tree)
-{
-	size_t left_height = 0, right_height = 0;
-
-	if (!tree)
-		return (0);
-
-	left_height = tree->left ? 1 + tree_height(tree->left) : 0;
-	right_height = tree->right ? 1 + tree_height(tree->right) : 0;
-
-	return (left_height > right_height ? left_height : right_height);
-}
-
-/**
- * tree_size - Counts nodes in binary tree
- * @tree: Pointer to root node
- *
- * Return: Number of nodes
- */
-static size_t tree_size(const heap_t *tree)
-{
-	if (!tree)
-		return (0);
-
-	return (1 + tree_size(tree->left) + tree_size(tree->right));
-}
-
-/**
  * find_last_node - Finds last node in level-order traversal
  * @root: Pointer to root node
  *

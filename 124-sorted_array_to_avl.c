@@ -1,17 +1,17 @@
 #include "binary_trees.h"
 
 /**
- * build_avl - Builds an AVL tree from a sorted array (helper)
- * @array: Pointer to the first element of the array
- * @start: Start index
- * @end: End index
+ * build_avl - Builds a balanced AVL tree from a sorted array (helper)
+ * @array: Pointer to first element of the array
+ * @start: Start index (signed)
+ * @end: End index (signed)
  * @parent: Pointer to parent node
  *
- * Return: Pointer to the root node of the subtree, or NULL
+ * Return: Pointer to subtree root, or NULL
  */
-static avl_t *build_avl(int *array, size_t start, size_t end, avl_t *parent)
+static avl_t *build_avl(int *array, int start, int end, avl_t *parent)
 {
-	size_t mid;
+	int mid;
 	avl_t *root;
 
 	if (start > end)
@@ -19,7 +19,7 @@ static avl_t *build_avl(int *array, size_t start, size_t end, avl_t *parent)
 
 	mid = start + (end - start) / 2;
 	root = (avl_t *)binary_tree_node(parent, array[mid]);
-	if (!root)
+	if (root == NULL)
 		return (NULL);
 
 	root->left = build_avl(array, start, mid - 1, root);
@@ -30,7 +30,7 @@ static avl_t *build_avl(int *array, size_t start, size_t end, avl_t *parent)
 
 /**
  * sorted_array_to_avl - Builds an AVL tree from a sorted array
- * @array: Pointer to the first element of the array
+ * @array: Pointer to first element of the array
  * @size: Number of elements in the array
  *
  * Return: Pointer to the root node of the created AVL tree, or NULL
@@ -40,5 +40,5 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 	if (array == NULL || size == 0)
 		return (NULL);
 
-	return (build_avl(array, 0, size - 1, NULL));
+	return (build_avl(array, 0, (int)size - 1, NULL));
 }

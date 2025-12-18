@@ -61,6 +61,26 @@ By completing this project, you should be able to:
 
 ---
 
+## ⚠️ Edge Cases Handled
+
+- **NULL pointers:** Functions handle NULL input gracefully
+- **Empty trees:** Operations on empty trees return appropriate values
+- **Single node trees:** Functions work correctly with single nodes
+- **Invalid operations:** Appropriate return values for invalid operations
+
+
+## 🌳 Tree Types Supported
+
+| Tree Type | Definition |
+|----------|------------|
+| Binary Tree | Each node has at most 2 children |
+| Full Binary Tree | Every node has 0 or 2 children |
+| Perfect Binary Tree | All levels are completely filled |
+| Complete Binary Tree | All levels except possibly the last are filled |
+
+
+
+
 ## 🧩 Data Structure
 
 ```c
